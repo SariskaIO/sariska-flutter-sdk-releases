@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/services.dart';
-import 'package:sariska/JitsiLocalTrack.dart';
+import 'JitsiLocalTrack.dart';
 import 'Connection.dart';
 
 typedef void LocalTrackCallback(List<JitsiLocalTrack> tracks);

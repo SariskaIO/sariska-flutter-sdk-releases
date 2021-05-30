@@ -2,20 +2,23 @@
 # To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html.
 # Run `pod lib lint sariska.podspec` to validate before publishing.
 #
+require "yaml"
+require "ostruct"
+project = OpenStruct.new YAML.load_file("../pubspec.yaml")
+
 Pod::Spec.new do |s|
-  s.name             = 'sariska'
-  s.version          = '0.0.1'
+  s.name             = project.name
+  s.version          = project.version
   s.summary          = 'A new flutter plugin project.'
-  s.description      = <<-DESC
-A new flutter plugin project.
-                       DESC
-  s.homepage         = 'http://example.com'
+  s.description      =  project.description
+  s.homepage         = 'https://github.com/SariskaIO/sariska-flutter-sdk-releases'
   s.license          = { :file => '../LICENSE' }
-  s.author           = { 'Your Company' => 'email@example.com' }
+  s.author           = { 'Sariska' => 'admin@sariska.io' }
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
-  s.platform = :ios, '8.0'
+  s.dependency 'sariska-media-transport', '1.0.3'
+  s.platform = :ios, '11.0'
 
   # Flutter.framework does not contain a i386 slice.
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES', 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386' }
